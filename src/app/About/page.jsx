@@ -144,20 +144,38 @@ export default function About() {
         </div>
 
         <div className="lg:hidden sm:mt-24 mt-12 w-full max-w-[1150px] flex flex-col items-center gap-12 sm:gap-24 xl:px-0 sm:px-16 px-7">
-          <div className="flex sm:flex-row flex-col w-full md:gap-12 gap-8">
+          <motion.div 
+          initial={{y: 20,opacity:0}}
+          animate={{y: 10, opacity:1}}
+          transition={{
+            duration: 0.35,
+            stiffness: 2000,
+            dampening: 200,
+            delay: 0.4
+          }}
+          className="flex sm:flex-row flex-col w-full md:gap-12 gap-8">
             <div className="aspect-[4/5] sm:aspect-video grow rounded-lg sm:rounded-2xl bg-out basis-3/4"></div> 
             <div className="flex flex-col basis-1/4 gap-1">
               <h1 className="font-semibold text-2xl text-textAlt">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
               <h2 className="font-inter text-sm text-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum.</h2>
             </div>
-          </div>
-          <div className="flex flex-col sm:flex-row-reverse w-full md:gap-12 gap-8">
+          </motion.div>
+          <motion.div 
+          initial={{y: 20,opacity:0}}
+          animate={{y: 10, opacity:1}}
+          transition={{
+            duration: 0.35,
+            stiffness: 2000,
+            dampening: 200,
+            delay: 0.4
+          }}
+          className="flex flex-col sm:flex-row-reverse w-full md:gap-12 gap-8">
             <div className="aspect-[4/5] sm:aspect-video grow rounded-lg sm:rounded-2xl bg-out basis-3/4"></div> 
             <div className="flex flex-col basis-1/4 gap-1">
               <h1 className="font-semibold text-2xl text-textAlt">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
               <h2 className="font-inter text-sm text-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum.</h2>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         <div className="w-full  max-w-[1150px] flex flex-col items-center xl:px-0  px-7">
