@@ -20,7 +20,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable} bg-neutral py-3 scroll-smooth`}>
+    <html lang="en" className={`${inter.variable} ${poppins.variable} bg-neutral py-3`}>
       <body>
         <Navbar/>
         {children}

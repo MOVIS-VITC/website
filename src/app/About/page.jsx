@@ -42,10 +42,23 @@ function useParallax(value) {
 
 export default function About() {
 
-  const [isCollapsed, setIsCollapsed] = useState(true);
 
+  // Leads
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const toggleHeight = () => {
     setIsCollapsed(!isCollapsed);
+  };
+
+  // Leads
+  const [isCollapsed2, setIsCollapsed2] = useState(true);
+  const toggleHeight2 = () => {
+    setIsCollapsed2(!isCollapsed2);
+  };
+
+  // Advisory
+  const [isCollapsed3, setIsCollapsed3] = useState(true);
+  const toggleHeight3 = () => {
+    setIsCollapsed3(!isCollapsed3);
   };
 
   const ref = useRef(null);
@@ -75,17 +88,55 @@ export default function About() {
 
         <Image className="md:hidden mb-6 mt-4" src={down}></Image>
 
-        <div className="sm:mt-24 mt-12 w-full max-w-[1150px] flex flex-col items-center gap-12 sm:gap-24 xl:px-0 sm:px-16 px-7">
+        <div className="hidden sm:mt-28 mt-12 w-full max-w-[1150px] sm:flex flex-col items-center gap-12 sm:gap-24 xl:px-0 sm:px-16 px-7">
           <div className="flex sm:flex-row flex-col w-full md:gap-12 gap-8">
-            <div className="aspect-[4/5] sm:aspect-video grow rounded-lg sm:rounded-2xl bg-out basis-3/4"></div> 
-            <motion.div style={{ y }} className="flex flex-col basis-1/4 gap-1">
+            <motion.div 
+            initial={{y: 20,opacity:0}}
+            animate={{y: 10, opacity:1}}
+            transition={{
+              duration: 0.35,
+              stiffness: 2000,
+              dampening: 200,
+              delay: 0.4
+            }}
+            className="aspect-[4/5] sm:aspect-video grow rounded-lg sm:rounded-2xl bg-out basis-3/4"></motion.div> 
+            <motion.div 
+            initial={{y: 20,opacity:0}}
+            animate={{y: 10, opacity:1}}
+            transition={{
+              duration: 0.35,
+              stiffness: 2000,
+              dampening: 200,
+              delay: 0.5
+            }}
+            style={{ y }} 
+            className="flex flex-col basis-1/4 gap-1 mt-4">
               <h1 className="font-semibold text-2xl text-textAlt">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
               <h2 className="font-inter text-sm text-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum.</h2>
             </motion.div>
           </div>
           <div className="flex flex-col sm:flex-row-reverse w-full md:gap-12 gap-8">
-            <div className="aspect-[4/5] sm:aspect-video grow rounded-lg sm:rounded-2xl bg-out basis-3/4"></div> 
-            <motion.div style={{ y }} className="flex flex-col basis-1/4 gap-1 -mt-12">
+            <motion.div
+            initial={{y: 20,opacity:0}}
+            animate={{y: 10, opacity:1}}
+            transition={{
+              duration: 0.35,
+              stiffness: 2000,
+              dampening: 200,
+              delay: 0.4
+            }}
+            className="aspect-[4/5] sm:aspect-video grow rounded-lg sm:rounded-2xl bg-out basis-3/4"></motion.div> 
+            <motion.div 
+            initial={{y: 20,opacity:0}}
+            animate={{y: 10, opacity:1}}
+            transition={{
+              duration: 0.35,
+              stiffness: 2000,
+              dampening: 200,
+              delay: 0.5
+            }}
+            style={{ y }} 
+            className="flex flex-col basis-1/4 gap-1 -mt-12">
               <h1 className="font-semibold text-2xl text-textAlt">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h1>
               <h2 className="font-inter text-sm text-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum.</h2>
             </motion.div>
@@ -110,6 +161,7 @@ export default function About() {
         </div>
 
         <div className="w-full  max-w-[1150px] flex flex-col items-center xl:px-0  px-7">
+          
           <div className="mt-16 mb-4 sm:mt-24 border-[1px] w-fit  border-textAlt text-textAlt font-semibold text-xs sm:text-sm text-center px-8 py-1 rounded-full">
             Current Roster
           </div>
@@ -117,6 +169,7 @@ export default function About() {
             Meet The Team
           </div>
           
+          {/* Leads */}
           <div className="text-2xl w-full text-textAlt text-left font-semibold">Leads</div>
           <div className="hidden lg:grid grid-cols-4 gap-8 w-full mt-4">
             {Leads.map((member, index) => {
@@ -129,11 +182,12 @@ export default function About() {
                 <EmployeeCardII key={index} length={member.length} name={member.name} link={member.link} dept={member.dept} />
               </div>
             ))}
-            <button onClick={toggleHeight} className="absolute bottom-0 left-1/2">
-              <Image src={down} alt="down arrow" width={10} height={10} />
+            <button onClick={toggleHeight} className={`${isCollapsed? 'bg-gradient-to-b from-transparent via-neutral to-neutral w-full absolute -bottom-1 flex items-center justify-center left-1/2 transform -translate-x-1/2': 'hidden'}`}>
+              <div className="text-center py-2 px-4 text-xs font-semibold text-textAlt pt-8">Show More</div>
             </button>
           </div>
 
+          {/* Faculty */}
           <div className="text-2xl w-full text-textAlt text-left font-semibold mt-10">Faculty Advisors</div>
           <div className="hidden lg:grid grid-cols-4 gap-8 w-full mt-4">
             {Faculty.map((member, index) => {
@@ -150,8 +204,9 @@ export default function About() {
             })}
           </div>
 
+          {/* Team Members */}
           <div className="text-2xl w-full text-textAlt text-left font-semibold mt-10">Team</div>
-          <div className="hidden lg:grid grid-cols-3 grid-flow-row gap-4 w-full mt-4">
+          <div className={`hidden lg:grid grid-cols-3 grid-flow-row gap-4 w-full mt-4`}>
             {Members.map((member, index) => {
               const isLoneElement = (Members.length) % 3 === 1 && index === Members.length - 1;
               const wrapperClass = isLoneElement ? 'col-start-2 col-end-3' : 'wrapper';
@@ -163,7 +218,7 @@ export default function About() {
               );
             })}
           </div>
-          <div className="grid lg:hidden md:grid-cols-2 grid-cols-1 grid-flow-row gap-4 w-full mt-4">
+          <div className={`relative grid lg:hidden md:grid-cols-2 grid-cols-1 grid-flow-row gap-4 w-full mt-4 ${isCollapsed2 ? 'max-h-96 overflow-y-hidden' : 'h-auto'}`}>
             {Members.map((member, index) => {
               return (
                 <div >
@@ -171,6 +226,9 @@ export default function About() {
                 </div>
               );
             })}
+            <button onClick={toggleHeight2} className={`${isCollapsed2? 'bg-gradient-to-b from-transparent via-neutral to-neutral w-full absolute -bottom-1 flex items-center justify-center left-1/2 transform -translate-x-1/2': 'hidden'}`}>
+              <div className="text-center py-2 px-4 text-xs font-semibold text-textAlt pt-8">Show More</div>
+            </button>
           </div>
 
           <div className="text-2xl w-full text-textAlt text-left font-semibold mt-10">Advisory</div>
@@ -186,7 +244,7 @@ export default function About() {
               );
             })}
           </div>
-          <div className="grid lg:hidden md:grid-cols-2 grid-cols-1 grid-flow-row gap-4 w-full mt-4">
+          <div className={`relative grid lg:hidden md:grid-cols-2 grid-cols-1 grid-flow-row gap-4 w-full mt-4 ${isCollapsed3 ? 'max-h-96 overflow-y-hidden' : 'h-auto'}`}>
             {Members.map((member, index) => {
               return (
                 <div >
@@ -194,6 +252,9 @@ export default function About() {
                 </div>
               );
             })}
+            <button onClick={toggleHeight3} className={`${isCollapsed3? 'bg-gradient-to-b from-transparent via-neutral to-neutral w-full absolute -bottom-1 flex items-center justify-center left-1/2 transform -translate-x-1/2': 'hidden'}`}>
+              <div className="text-center py-2 px-4 text-xs font-semibold text-textAlt pt-8">Show More</div>
+            </button>
           </div>
 
           
