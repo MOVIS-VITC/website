@@ -64,7 +64,7 @@ const Footer = () => {
                         className="xl:w-36 w-32"
                 />
             </div>
-            <div className="w-full border-2 text-xs py-2 text-textAlt border-t-out flex flex-row justify-center">
+            <div className="w-full border-2 text-xs py-2 px-2 text-textAlt border-t-out flex flex-row justify-center">
                 <p>Copyright © 2023, Meine Electric. All Rights Reserved. Icons by <u><a target="_blank" href="https://icons8.com/">Icons8</a></u></p>
             </div>
         </section>
