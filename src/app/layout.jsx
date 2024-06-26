@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import { Poppins } from 'next/font/google';
 import Navbar from "../components/Navbar.jsx";
+import Footer from "../components/Footer.jsx";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter",});
@@ -20,10 +21,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable} bg-neutral py-3`}>
+    <html lang="en" className={`${inter.variable} ${poppins.variable} bg-neutral pt-3`}>
       <body>
         <Navbar/>
         {children}
+        <Footer/>
       </body>
     </html>
   );

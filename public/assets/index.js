@@ -10,13 +10,14 @@ import nasa from './logos/nasa.png'
 
 import placeholder from './members/placeholder.jpg'
 
-
 import cross from './icons/cross.svg'
 import down from './icons/down_arrow.svg'
 import leaf from './icons/leaf.svg'
 import spark from './icons/spark.svg'
 import book from './icons/book.svg'
 import star from './icons/star.svg'
+import ig from './icons/instagram.svg'
+import link from './icons/linkedin.svg'
 
 export {
     logo,
@@ -35,4 +36,6 @@ export {
     star,
     nasa,
     placeholder,
+    ig,
+    link,
 }
