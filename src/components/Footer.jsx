@@ -10,7 +10,7 @@ const Footer = () => {
     const currentPath = usePathname();
 
     const getLinkStyle = (path) => {
-        return path === currentPath ? "xl:text-lg text-heading font-semibold" : "xl:text-lg text-light font-medium"; // Apply class only if paths match
+        return path === currentPath ? "xl:text-lg text-textAlt font-semibold" : "xl:text-lg text-light font-medium"; // Apply class only if paths match
     };
 
     return (
