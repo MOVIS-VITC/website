@@ -14,9 +14,9 @@ const Footer = () => {
     };
 
     return (
-        <section className="flex flex-col items-center font-poppins gap-12 mt-12 sm:mt-20 ">
+        <section className="flex flex-col items-center font-poppins gap-8 sm:gap-12 mt-12 sm:mt-20 ">
             <div className="sm:mt-28 mt-12 w-full max-w-[1150px] flex flex-col sm:flex-row justify-between items-start xl:px-0 sm:px-16 px-7"> 
-                <div className="basis-2/3 sm:mb-0 mb-8 flex flex-col w-full -mt-2 text-[2.5rem] lg:text-[3rem] xl:text-[4.5rem] text-textAlt font-semibold leading-[3rem] lg:leading-[3.5rem] xl:leading-[5rem] gap-32 h-full">
+                <div className="basis-2/3 sm:mb-0 mb-8 flex flex-col w-full -mt-2 text-[2.75rem] lg:text-[3rem] xl:text-[4.5rem] text-textAlt font-semibold leading-[3.25rem] lg:leading-[3.5rem] xl:leading-[5rem] gap-32 h-full">
                     <div>Lorem ipsum <br/>dolor sit <span className="text-[#ED6A5A]">a met,</span><br/> <span className="text-[#F3DE8A]">consenter</span><br/> <span className="text-[#00A778]">adipescent.</span></div>
                 </div>
                 <div className="basis-1/3 flex flex-col justify-between items-stretch lg:mr-20 sm:gap-8 gap-4">
