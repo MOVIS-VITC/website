@@ -45,6 +45,12 @@ const Navbar = () => {
                 <div className={getLinkStyle("/Contact")}>Contact</div>
             </li>
           </Link>
+          
+          <Link href="/join-us" onClick={isOpen}>
+            <li className="hover:bg-out rounded-lg py-2 px-3 transition transform active:scale-95 ease-in-out">
+                <div className={getLinkStyle("/join-us")}>Join us</div>
+            </li>
+          </Link>
         </ul>
         <div className="flex flex-row justify-end border-2 border-heading rounded-full p-2 ease-in-out">
           <button onClick={isOpen}>
@@ -132,10 +138,15 @@ const Navbar = () => {
                     <div className={getLinkStyle("/Projects")}>Projects</div>
                 </li>
               </Link>
+              <Link href="/Contact">
+                <li className="hover:bg-out rounded-lg py-2 px-3 transition ">
+                    <div className={getLinkStyle("/Contact")}>Contact</div>
+                </li>
+              </Link>
             </ul>
-            <Link href="/Contact" className="flex">
+            <Link href="/Join-us" className="flex">
               <button className="bg-black rounded-md text-white px-6 pt-2 pb-3 transition transform active:scale-95 ease-in-out">
-                  <div>Contact</div>
+                  <div>Join us</div>
               </button>
             </Link>
           </div>

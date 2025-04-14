@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -6,69 +6,107 @@ import { alt_logo, ig, link } from "../../public/assets";
 import { usePathname } from "next/navigation";
 
 const Footer = () => {
+  const currentPath = usePathname();
 
-    const currentPath = usePathname();
+  const getLinkStyle = (path) => {
+    return `text-lg transition-colors duration-200 ${
+      path === currentPath 
+        ? "text-textAlt font-semibold" 
+        : "text-light font-medium hover:text-textAlt"
+    }`;
+  };
 
-    const getLinkStyle = (path) => {
-        return path === currentPath ? "xl:text-lg text-textAlt font-semibold" : "xl:text-lg text-light font-medium"; // Apply class only if paths match
-    };
+  const footerLinks = [
+    { name: "Homepage", path: "/" },
+    { name: "About", path: "/About" },
+    { name: "Projects", path: "/Projects" },
+    { name: "Contact", path: "/Contact" }
+  ];
 
-    return (
-        <section className="flex flex-col items-center font-poppins gap-8 sm:gap-12 mt-12 sm:mt-20 ">
-            <div className="sm:mt-28 mt-12 w-full max-w-[1150px] flex flex-col sm:flex-row justify-between items-start xl:px-0 sm:px-16 px-7"> 
-                <div className="basis-2/3 sm:mb-0 mb-8 flex flex-col w-full -mt-2 text-[2.75rem] lg:text-[3rem] xl:text-[4.5rem] text-textAlt font-semibold leading-[3.25rem] lg:leading-[3.5rem] xl:leading-[5rem] gap-32 h-full">
-                    <div>Lorem ipsum <br/>dolor sit <span className="text-[#ED6A5A]">a met,</span><br/> <span className="text-[#F3DE8A]">consenter</span><br/> <span className="text-[#00A778]">adipescent.</span></div>
-                </div>
-                <div className="basis-1/3 flex flex-col justify-between items-stretch lg:mr-20 sm:gap-8 gap-4">
-                    <div className="flex flex-col">
-                        <div className="xl:text-base text-sm font-semibold mb-1 xl:mb-3">Pages</div>
-                        <Link href="/">
-                            <div className={getLinkStyle("/")}>Homepage</div>
-                        </Link>
-                        <Link href="/About" >
-                            <div className={getLinkStyle("/About")}>About</div>
-                        </Link>
-                        <Link href="/Projects" >
-                            <div className={getLinkStyle("/Projects")}>Projects</div>
-                        </Link>
-                        <Link href="/Contact" >
-                            <div className={getLinkStyle("/Contact")}>Contact</div>
-                        </Link>
-                    </div>
-                    <div className="flex flex-col">
-                        <div className="xl:text-base text-sm font-semibold  mb-1 xl:mb-3">Address</div>
-                        <div className="xl:text-lg text-light font-medium">Vellore Institute of Technology, Vandalur - Kelambakkam Road Chennai, Tamil Nadu - 600 127</div>
-                    </div>
-                    <div className="flex flex-row gap-2">
-                        <Image
-                            src={ig} // Route of the image file
-                            height={30} // Desired size with correct aspect ratio
-                            width={30} // Desired size with correct aspect ratio
-                            alt="Logo"
-                        />
-                        <Image
-                        src={link} // Route of the image file
-                        height={30} // Desired size with correct aspect ratio
-                        width={30} // Desired size with correct aspect ratio
-                        alt="Logo"
-                        />
-                    </div>
-                </div>
+  const socialLinks = [
+    { icon: ig, alt: "Instagram", url: "https://www.instagram.com/movisvitcc/" },
+    { icon: link, alt: "LinkedIn", url: "https://www.linkedin.com/company/movisvitcc/" }
+  ];
+
+  return (
+    <footer className="w-full bg-white mt-20 sm:mt-28">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 py-12 border-b border-out">
+          {/* Logo and Description */}
+          <div className="flex flex-col items-start">
+            <Image
+              src={alt_logo}
+              height={150}
+              width={150}
+              alt="MOVIS Logo"
+              className="w-32 md:w-36 mb-6"
+              priority
+            />
+            <p className="text-light text-base mb-6">
+              Innovating for a sustainable future through robotics and technology.
+            </p>
+          </div>
+
+          {/* Navigation Links */}
+          <div className="flex flex-col">
+            <h3 className="text-base font-semibold mb-4 text-heading">Navigation</h3>
+            <ul className="space-y-3">
+              {footerLinks.map((link) => (
+                <li key={link.path}>
+                  <Link href={link.path}>
+                    <span className={getLinkStyle(link.path)}>
+                      {link.name}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contact Information */}
+          <div className="flex flex-col">
+            <h3 className="text-base font-semibold mb-4 text-heading">Contact Us</h3>
+            <address className="not-italic text-light text-base mb-6">
+              Vellore Institute of Technology<br />
+              Vandalur - Kelambakkam Road<br />
+              Chennai, Tamil Nadu - 600 127<br />
+              India
+            </address>
+            
+            <div className="flex flex-col">
+              <h3 className="text-base font-semibold mb-4 text-heading">Follow Us</h3>
+              <div className="flex gap-4">
+                {socialLinks.map((social) => (
+                  <a 
+                    key={social.alt}
+                    href={social.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:opacity-75 transition-opacity"
+                  >
+                    <Image
+                      src={social.icon}
+                      height={30}
+                      width={30}
+                      alt={social.alt}
+                    />
+                  </a>
+                ))}
+              </div>
             </div>
-            <div className="w-full max-w-[1150px] flex flex-row items-center gap-12 sm:gap-24 xl:px-0 sm:px-16 px-7 justify-start">
-                <Image
-                        src={alt_logo} // Route of the image file
-                        height={150} // Desired size with correct aspect ratio
-                        width={150} // Desired size with correct aspect ratio
-                        alt="Logo"
-                        className="xl:w-36 w-32"
-                />
-            </div>
-            <div className="w-full border-2 text-xs py-2 px-2 text-textAlt border-t-out flex flex-row justify-center">
-                <p>Copyright © 2023, Meine Electric. All Rights Reserved. Icons by <u><a target="_blank" href="https://icons8.com/">Icons8</a></u></p>
-            </div>
-        </section>
-    )
-}
+          </div>
+        </div>
 
-export default Footer
+        {/* Copyright */}
+        <div className="py-4 text-center">
+          <p className="text-xs text-textAlt">
+            Copyright © {new Date().getFullYear()}, MOVIS. All Rights Reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
